@@ -13,12 +13,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: 14
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+   
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js 14
@@ -26,12 +21,9 @@ jobs:
       with:
         node-version: 14
         cache: 'npm'
-    steps:
-      - name: NPM Install
-      - run: npm install
-    steps:
-      - name: NPM run Build
-      - run: npm run build
-    steps:
-      - name: NPM run Unit test
-      - run: npm test:unit
+  
+    - run: npm install
+    
+    - run: npm run build
+  
+    - run: npm run test:unit
